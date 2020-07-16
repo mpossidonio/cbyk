@@ -1,0 +1,54 @@
+﻿@model MapaVM
+@{
+    ViewData["Title"] = "Mapas Nuvens de Cinzas";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+
+    @using (Html.BeginForm("MapaGrid", "Mapa", FormMethod.Post))
+    {
+
+        <h4>Informe as dimensões do mapa a ser criado</h4>
+        <div class="form-group">
+            <label asp-for="Aeroportos">Quantidade Aeroportos</label>
+            <input class="form-control" asp-for="Aeroportos" id="Aeroportos" min="3" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+            <span asp-validation-for="Aeroportos" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nuvens">Quantidade de Nuvens</label>
+            <input class="form-control" asp-for="Nuvens" id="Nuvens" min="4" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+            <span asp-validation-for="Nuvens" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Linhas">Quantidade de Linhas</label>
+            <input class="form-control" asp-for="Linhas" id="Linhas" min="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+            <span asp-validation-for="Linhas" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Colunas">Quantidade de Colunas</label>
+            <input class="form-control" asp-for="Colunas" id="Colunas" min="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+            <span asp-validation-for="Colunas" class="text-danger"></span>
+        </div>
+
+        <div class="modal-footer">
+            @*<button id="confirmGrid" type="submit" class="btn btn-primary btn-submit">
+                    <i class="fas fa-sync"></i> Calcular
+                </button>*@
+            <div class="control-group">
+                <div class="controls">
+                    <input type="submit" class="btn btn-primary" value="Calcular" />
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+
+}

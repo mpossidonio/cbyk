@@ -1,0 +1,37 @@
+﻿@model MapaVM
+@{
+    ViewBag.Title = "Grid de Nuvens de Cinzas";
+}
+<h2>@ViewBag.Title</h2>
+
+<div class="text-center">
+    <p>Total de Aeroportos: @Model.Aeroportos.</p>
+    <p>Total de Nuvens: @Model.Nuvens.</p>
+
+    <p>Dias para o 1o aeroporto ficar coberto pelas nuvens: @Model.Dias1Aeroporto.</p>
+    <p>Dias para todos os aeroportos estarem cobertos pelas nuvens: @Model.DiasTodosAeroportos.</p>
+
+    @{
+        var dia = 0;
+        @foreach (var grid in @Model.Grids)
+        {
+            dia++;
+            <table class="table table-bordered table-sm">
+                <caption style="caption-side:top">Dia @dia</caption>
+                <tbody>
+                    @for (int i = 0; i < @Model.Linhas; i++)
+                    {
+                        <tr>
+
+                            @for (int j = 0; j < @Model.Colunas; j++)
+                            {
+                                <td>@((grid[i, j].Equals('\0')) ? '.' : grid[i,j]) </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+
+</div>
